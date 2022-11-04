@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature calculator</title>
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #container {
+            background-color: aqua;
+            text-align: center;
+            padding: 50px 0px;
+            width: 50%;
+            margin: auto;
+        }
+
+        label {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .inputfield {
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .field {
+            margin: 10px;
+            padding: 5px;
+            text-align: center;
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 align="center">Temperature Calculator</h1>
+    <div id="container">
+        <div class="inputfield">
+            <label for="Celsius">Celsius</label><br>
+            <input type="number" value=0 class="field" id="cels">
+        </div>
+        <div class="inputfield">
+            <label for="Farenheit">Farenheit</label><br>
+            <input type="number" value=32 class="field" id="feren">
+        </div>
+    </div>
+
+    <script>
+
+        // selecting the fields
+        var cels = document.getElementById("cels");
+        var feren = document.getElementById("feren");
+
+
+        cels.addEventListener('input', function () {
+            let f = (this.value * 9 / 5) + 32;
+            // condition to limit value upto 4 decimal places
+            if (!Number.isInteger(f)) {
+                f = f.toFixed(4);
+            }
+
+            // setting the value of feren field to f
+            feren.value = f;
+        });
+
+        feren.addEventListener('input', function () {
+            let c = (this.value - 32) * 5 / 9
+
+            if (!Number.isInteger(c)) {
+                c = c.toFixed(4);
+            }
+            cels.value = c;
+
+        });
+
+
+    </script>
+</body>
+
+</html>
